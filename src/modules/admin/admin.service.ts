@@ -16,13 +16,7 @@ function getAccessTokenSecret(): string {
   return secret;
 }
 
-export async function createFirstAdmin(input: CreateAdminInput) {
-  const existingAdminCount = await prisma.admin.count();
-
-  if (existingAdminCount > 0) {
-    throw new Error("ADMIN_ALREADY_EXISTS");
-  }
-
+export async function createAdmin(input: CreateAdminInput) {
   const passwordHash = await argon2.hash(input.password, {
     type: argon2.argon2id,
   });

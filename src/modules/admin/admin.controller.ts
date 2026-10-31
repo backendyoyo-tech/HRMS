@@ -7,7 +7,7 @@ import {
   adminLoginSchema,
 } from "./admin.validation.js";
 import {
-  createFirstAdmin,
+  createAdmin,
   getAdminById,
   loginAdmin,
 } from "./admin.service.js";
@@ -45,7 +45,7 @@ export const createAdminController: RequestHandler = async (
   }
 
   try {
-    const admin = await createFirstAdmin(validation.data);
+    const admin = await createAdmin(validation.data);
 
     res.status(201).json({
       success: true,
