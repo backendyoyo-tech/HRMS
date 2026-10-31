@@ -1,0 +1,100 @@
+
+generator client {
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  moduleFormat        = "esm"
+  importFileExtension = "ts"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum SubmissionStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+}
+
+enum AdminRole {
+  ADMIN
+}
+
+enum AdminStatus {
+  ACTIVE
+  DISABLED
+}
+
+model FormSubmission {
+  id        String           @id @default(uuid())
+  status    SubmissionStatus @default(SUBMITTED)
+
+  // Personal Details
+  fullName       String
+  designation    String
+  personalEmail  String
+  contactNumber  String
+
+  // Identity Details
+  aadhaarNumber  String
+  panNumber      String
+  maritalStatus  String
+
+  // Address Details
+  aadhaarAddress String @db.Text
+  currentAddress String @db.Text
+
+  // Emergency Contact 1
+  emergencyContact1Number   String
+  emergencyContact1Relation String
+
+  // Emergency Contact 2
+  emergencyContact2Number   String
+  emergencyContact2Relation String
+
+  // Qualification
+  highestQualification String
+  instituteName        String
+  passingYear          Int
+
+  // Previous Employment
+  previousCompanyName        String?
+  previousCompanyDesignation String?
+  employmentDuration         String?
+  previousHRName             String?
+  previousHREmail            String?
+  previousHRContactNumber    String?
+
+  // Bank Details
+  accountHolderName String
+  accountNumber     String
+  ifscCode          String
+  bankName          String
+
+  // System Fields
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([fullName])
+  @@index([personalEmail])
+  @@index([contactNumber])
+  @@index([status])
+  @@index([createdAt])
+  @@map("form_submissions")
+}
+
+model Admin {
+  id           String      @id @default(uuid())
+  name         String
+  email        String      @unique
+  passwordHash String
+  role         AdminRole   @default(ADMIN)
+  status       AdminStatus @default(ACTIVE)
+
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  @@index([status])
+  @@map("admins")
+}
