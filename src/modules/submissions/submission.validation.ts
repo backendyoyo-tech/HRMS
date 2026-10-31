@@ -27,7 +27,7 @@ export const createSubmissionSchema = z
     maritalStatus: z.string().trim().min(2).max(50),
 
     aadhaarAddress: z.string().trim().min(5).max(1000),
-    currentAddress: z.string().trim().min(5).max(1000),
+    currentAddress: z.string().trim().min(5).max(1000), //optional
 
     emergencyContact1Number: phoneSchema,
     emergencyContact1Relation: z.string().trim().min(2).max(100),
@@ -38,7 +38,9 @@ export const createSubmissionSchema = z
     highestQualification: z.string().trim().min(2).max(200),
     instituteName: z.string().trim().min(2).max(200),
     passingYear: z.number().int().min(1950).max(2100),
+     
 
+    //optional
     previousCompanyName: z.string().trim().max(200).optional(),
     previousCompanyDesignation: z.string().trim().max(150).optional(),
     employmentDuration: z.string().trim().max(100).optional(),
