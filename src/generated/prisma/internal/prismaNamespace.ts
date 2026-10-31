@@ -398,7 +398,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   FormSubmission: 'FormSubmission',
-  Admin: 'Admin'
+  Admin: 'Admin',
+  FormShareLink: 'FormShareLink'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -414,7 +415,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "formSubmission" | "admin"
+    modelProps: "formSubmission" | "admin" | "formShareLink"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -566,6 +567,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    FormShareLink: {
+      payload: Prisma.$FormShareLinkPayload<ExtArgs>
+      fields: Prisma.FormShareLinkFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.FormShareLinkFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FormShareLinkPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.FormShareLinkFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FormShareLinkPayload>
+        }
+        findFirst: {
+          args: Prisma.FormShareLinkFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FormShareLinkPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.FormShareLinkFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FormShareLinkPayload>
+        }
+        findMany: {
+          args: Prisma.FormShareLinkFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FormShareLinkPayload>[]
+        }
+        create: {
+          args: Prisma.FormShareLinkCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FormShareLinkPayload>
+        }
+        createMany: {
+          args: Prisma.FormShareLinkCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.FormShareLinkCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FormShareLinkPayload>[]
+        }
+        delete: {
+          args: Prisma.FormShareLinkDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FormShareLinkPayload>
+        }
+        update: {
+          args: Prisma.FormShareLinkUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FormShareLinkPayload>
+        }
+        deleteMany: {
+          args: Prisma.FormShareLinkDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.FormShareLinkUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.FormShareLinkUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FormShareLinkPayload>[]
+        }
+        upsert: {
+          args: Prisma.FormShareLinkUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FormShareLinkPayload>
+        }
+        aggregate: {
+          args: Prisma.FormShareLinkAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFormShareLink>
+        }
+        groupBy: {
+          args: Prisma.FormShareLinkGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FormShareLinkGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.FormShareLinkCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FormShareLinkCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -653,6 +728,18 @@ export const AdminScalarFieldEnum = {
 } as const
 
 export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
+
+
+export const FormShareLinkScalarFieldEnum = {
+  id: 'id',
+  tokenHash: 'tokenHash',
+  createdByAdminId: 'createdByAdminId',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type FormShareLinkScalarFieldEnum = (typeof FormShareLinkScalarFieldEnum)[keyof typeof FormShareLinkScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -935,6 +1022,7 @@ export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaC
 export type GlobalOmitConfig = {
   formSubmission?: Prisma.FormSubmissionOmit
   admin?: Prisma.AdminOmit
+  formShareLink?: Prisma.FormShareLinkOmit
 }
 
 /* Types for Logging */

@@ -98,3 +98,18 @@ model Admin {
   @@index([status])
   @@map("admins")
 }
+
+
+model FormShareLink {
+  id                String   @id @default(uuid())
+  tokenHash         String   @unique
+  createdByAdminId  String
+  expiresAt         DateTime?
+  revokedAt         DateTime?
+  createdAt         DateTime @default(now())
+
+  @@index([createdByAdminId])
+  @@index([expiresAt])
+  @@index([revokedAt])
+  @@map("form_share_links")
+}

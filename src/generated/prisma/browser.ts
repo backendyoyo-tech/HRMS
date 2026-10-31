@@ -27,3 +27,8 @@ export type FormSubmission = Prisma.FormSubmissionModel
  * 
  */
 export type Admin = Prisma.AdminModel
+/**
+ * Model FormShareLink
+ * 
+ */
+export type FormShareLink = Prisma.FormShareLinkModel

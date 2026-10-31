@@ -8,6 +8,8 @@ import healthRoutes from "./modules/health/health.routes.js";
 import submissionRoutes from "./modules/submissions/submission.routes.js";
 import adminAuthRoutes from "./modules/admin/admin.routes.js";
 import adminSubmissionsRoutes from "./modules/admin/submissions.routes.js";
+import adminFormLinksRoutes from "./modules/admin/form-links.routes.js";
+import formLinkRoutes from "./modules/submissions/form-link.routes.js";
 
 const app = express();
 
@@ -51,4 +53,9 @@ app.use("/api/v1/submissions", submissionRoutes);
 app.use("/api/v1/admin/auth", adminAuthRoutes);
 
 app.use("/api/v1/admin/submissions", adminSubmissionsRoutes);
+
+app.use("/api/v1/admin/form-links", adminFormLinksRoutes);
+
+app.use("/api/v1/form-links", formLinkRoutes);
+
 export default app;
