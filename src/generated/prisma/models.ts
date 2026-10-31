@@ -8,6 +8,6 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/FormSubmission.ts'
-export type * from './models/Admin.ts'
-export type * from './commonInputTypes.ts'
+export type * from './models/FormSubmission.js'
+export type * from './models/Admin.js'
+export type * from './commonInputTypes.js'
