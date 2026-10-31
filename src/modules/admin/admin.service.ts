@@ -100,3 +100,42 @@ export async function getAdminById(id: string) {
     },
   });
 }
+
+export async function resetAdminPassword(
+  adminId: string,
+  oldPassword: string,
+  newPassword: string,
+): Promise<void> {
+  const admin = await prisma.admin.findUnique({
+    where: { id: adminId },
+    select: {
+      id: true,
+      passwordHash: true,
+      status: true,
+    },
+  });
+
+  if (!admin || admin.status !== "ACTIVE") {
+    throw new Error("ADMIN_NOT_FOUND");
+  }
+
+  const isOldPasswordValid = await argon2.verify(
+    admin.passwordHash,
+    oldPassword,
+  );
+
+  if (!isOldPasswordValid) {
+    throw new Error("INVALID_OLD_PASSWORD");
+  }
+
+  const newPasswordHash = await argon2.hash(newPassword, {
+    type: argon2.argon2id,
+  });
+
+  await prisma.admin.update({
+    where: { id: admin.id },
+    data: {
+      passwordHash: newPasswordHash,
+    },
+  });
+}

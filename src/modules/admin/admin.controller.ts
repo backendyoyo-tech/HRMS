@@ -1,4 +1,7 @@
 import type { RequestHandler } from "express";
+import jwt from "jsonwebtoken";
+import { resetAdminPassword } from "./admin.service.js";
+import { resetAdminPasswordSchema } from "./admin.validation.js";
 import {
   createAdminSchema,
   adminLoginSchema,
@@ -163,6 +166,103 @@ export const adminMeController: RequestHandler = async (_req, res) => {
     res.status(500).json({
       success: false,
       message: "Unable to get admin details",
+    });
+  }
+};
+
+export const resetAdminPasswordController: RequestHandler = async (
+  req,
+  res,
+) => {
+  const validation = resetAdminPasswordSchema.safeParse(req.body);
+
+  if (!validation.success) {
+    res.status(400).json({
+      success: false,
+      message: "Invalid password reset details",
+      errors: validation.error.flatten().fieldErrors,
+    });
+    return;
+  }
+
+  const token = req.cookies?.accessToken as string | undefined;
+
+  if (!token) {
+    res.status(401).json({
+      success: false,
+      message: "Authentication required",
+    });
+    return;
+  }
+
+  const secret = process.env.JWT_ACCESS_SECRET;
+
+  if (!secret || secret.length < 32) {
+    res.status(500).json({
+      success: false,
+      message: "Authentication configuration error",
+    });
+    return;
+  }
+
+  let adminId: string;
+
+  try {
+    const payload = jwt.verify(token, secret) as jwt.JwtPayload;
+
+    const tokenAdminId =
+      payload.adminId ?? payload.id ?? payload.sub;
+
+    if (typeof tokenAdminId !== "string" || !tokenAdminId) {
+      res.status(401).json({
+        success: false,
+        message: "Invalid authentication token",
+      });
+      return;
+    }
+
+    adminId = tokenAdminId;
+  } catch {
+    res.status(401).json({
+      success: false,
+      message: "Invalid or expired authentication token",
+    });
+    return;
+  }
+
+  const { oldPassword, newPassword } = validation.data;
+
+  try {
+    await resetAdminPassword(adminId, oldPassword, newPassword);
+
+    res.status(200).json({
+      success: true,
+      message: "Password changed successfully",
+    });
+  } catch (error) {
+    if (error instanceof Error) {
+      if (error.message === "INVALID_OLD_PASSWORD") {
+        res.status(400).json({
+          success: false,
+          message: "Old password is incorrect",
+        });
+        return;
+      }
+
+      if (error.message === "ADMIN_NOT_FOUND") {
+        res.status(404).json({
+          success: false,
+          message: "Admin account not found or inactive",
+        });
+        return;
+      }
+    }
+
+    console.error("Admin password reset error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to change password",
     });
   }
 };
