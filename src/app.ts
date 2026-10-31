@@ -19,7 +19,7 @@ app.use(helmet());
 
 const allowedOrigins = process.env.CORS_ORIGINS
   ? process.env.CORS_ORIGINS.split(",").map((origin) => origin.trim())
-  : ["http://localhost:3000"];
+  : ["http://localhost:3000", "https://hr-management-system-nine-lyart.vercel.app"];
 
 app.use(
   cors({
