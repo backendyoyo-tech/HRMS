@@ -51,12 +51,12 @@ export const getSubmissionByIdController: RequestHandler = async (
   req,
   res,
 ) => {
-  const { id } = req.params;
+  const id = req.params.id;
 
-  if (!id) {
+  if (typeof id !== "string" || id.trim().length === 0) {
     res.status(400).json({
       success: false,
-      message: "Submission ID is required",
+      message: "A valid submission ID is required",
     });
     return;
   }
