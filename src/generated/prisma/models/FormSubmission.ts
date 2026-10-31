@@ -340,7 +340,7 @@ export type FormSubmissionGroupByOutputType = {
   panNumber: string
   maritalStatus: string
   aadhaarAddress: string
-  currentAddress: string
+  currentAddress: string | null
   emergencyContact1Number: string
   emergencyContact1Relation: string
   emergencyContact2Number: string
@@ -396,7 +396,7 @@ export type FormSubmissionWhereInput = {
   panNumber?: Prisma.StringFilter<"FormSubmission"> | string
   maritalStatus?: Prisma.StringFilter<"FormSubmission"> | string
   aadhaarAddress?: Prisma.StringFilter<"FormSubmission"> | string
-  currentAddress?: Prisma.StringFilter<"FormSubmission"> | string
+  currentAddress?: Prisma.StringNullableFilter<"FormSubmission"> | string | null
   emergencyContact1Number?: Prisma.StringFilter<"FormSubmission"> | string
   emergencyContact1Relation?: Prisma.StringFilter<"FormSubmission"> | string
   emergencyContact2Number?: Prisma.StringFilter<"FormSubmission"> | string
@@ -429,7 +429,7 @@ export type FormSubmissionOrderByWithRelationInput = {
   panNumber?: Prisma.SortOrder
   maritalStatus?: Prisma.SortOrder
   aadhaarAddress?: Prisma.SortOrder
-  currentAddress?: Prisma.SortOrder
+  currentAddress?: Prisma.SortOrderInput | Prisma.SortOrder
   emergencyContact1Number?: Prisma.SortOrder
   emergencyContact1Relation?: Prisma.SortOrder
   emergencyContact2Number?: Prisma.SortOrder
@@ -465,7 +465,7 @@ export type FormSubmissionWhereUniqueInput = Prisma.AtLeast<{
   panNumber?: Prisma.StringFilter<"FormSubmission"> | string
   maritalStatus?: Prisma.StringFilter<"FormSubmission"> | string
   aadhaarAddress?: Prisma.StringFilter<"FormSubmission"> | string
-  currentAddress?: Prisma.StringFilter<"FormSubmission"> | string
+  currentAddress?: Prisma.StringNullableFilter<"FormSubmission"> | string | null
   emergencyContact1Number?: Prisma.StringFilter<"FormSubmission"> | string
   emergencyContact1Relation?: Prisma.StringFilter<"FormSubmission"> | string
   emergencyContact2Number?: Prisma.StringFilter<"FormSubmission"> | string
@@ -498,7 +498,7 @@ export type FormSubmissionOrderByWithAggregationInput = {
   panNumber?: Prisma.SortOrder
   maritalStatus?: Prisma.SortOrder
   aadhaarAddress?: Prisma.SortOrder
-  currentAddress?: Prisma.SortOrder
+  currentAddress?: Prisma.SortOrderInput | Prisma.SortOrder
   emergencyContact1Number?: Prisma.SortOrder
   emergencyContact1Relation?: Prisma.SortOrder
   emergencyContact2Number?: Prisma.SortOrder
@@ -539,7 +539,7 @@ export type FormSubmissionScalarWhereWithAggregatesInput = {
   panNumber?: Prisma.StringWithAggregatesFilter<"FormSubmission"> | string
   maritalStatus?: Prisma.StringWithAggregatesFilter<"FormSubmission"> | string
   aadhaarAddress?: Prisma.StringWithAggregatesFilter<"FormSubmission"> | string
-  currentAddress?: Prisma.StringWithAggregatesFilter<"FormSubmission"> | string
+  currentAddress?: Prisma.StringNullableWithAggregatesFilter<"FormSubmission"> | string | null
   emergencyContact1Number?: Prisma.StringWithAggregatesFilter<"FormSubmission"> | string
   emergencyContact1Relation?: Prisma.StringWithAggregatesFilter<"FormSubmission"> | string
   emergencyContact2Number?: Prisma.StringWithAggregatesFilter<"FormSubmission"> | string
@@ -572,7 +572,7 @@ export type FormSubmissionCreateInput = {
   panNumber: string
   maritalStatus: string
   aadhaarAddress: string
-  currentAddress: string
+  currentAddress?: string | null
   emergencyContact1Number: string
   emergencyContact1Relation: string
   emergencyContact2Number: string
@@ -605,7 +605,7 @@ export type FormSubmissionUncheckedCreateInput = {
   panNumber: string
   maritalStatus: string
   aadhaarAddress: string
-  currentAddress: string
+  currentAddress?: string | null
   emergencyContact1Number: string
   emergencyContact1Relation: string
   emergencyContact2Number: string
@@ -638,7 +638,7 @@ export type FormSubmissionUpdateInput = {
   panNumber?: Prisma.StringFieldUpdateOperationsInput | string
   maritalStatus?: Prisma.StringFieldUpdateOperationsInput | string
   aadhaarAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  currentAddress?: Prisma.StringFieldUpdateOperationsInput | string
+  currentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emergencyContact1Number?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact1Relation?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact2Number?: Prisma.StringFieldUpdateOperationsInput | string
@@ -671,7 +671,7 @@ export type FormSubmissionUncheckedUpdateInput = {
   panNumber?: Prisma.StringFieldUpdateOperationsInput | string
   maritalStatus?: Prisma.StringFieldUpdateOperationsInput | string
   aadhaarAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  currentAddress?: Prisma.StringFieldUpdateOperationsInput | string
+  currentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emergencyContact1Number?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact1Relation?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact2Number?: Prisma.StringFieldUpdateOperationsInput | string
@@ -704,7 +704,7 @@ export type FormSubmissionCreateManyInput = {
   panNumber: string
   maritalStatus: string
   aadhaarAddress: string
-  currentAddress: string
+  currentAddress?: string | null
   emergencyContact1Number: string
   emergencyContact1Relation: string
   emergencyContact2Number: string
@@ -737,7 +737,7 @@ export type FormSubmissionUpdateManyMutationInput = {
   panNumber?: Prisma.StringFieldUpdateOperationsInput | string
   maritalStatus?: Prisma.StringFieldUpdateOperationsInput | string
   aadhaarAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  currentAddress?: Prisma.StringFieldUpdateOperationsInput | string
+  currentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emergencyContact1Number?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact1Relation?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact2Number?: Prisma.StringFieldUpdateOperationsInput | string
@@ -770,7 +770,7 @@ export type FormSubmissionUncheckedUpdateManyInput = {
   panNumber?: Prisma.StringFieldUpdateOperationsInput | string
   maritalStatus?: Prisma.StringFieldUpdateOperationsInput | string
   aadhaarAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  currentAddress?: Prisma.StringFieldUpdateOperationsInput | string
+  currentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emergencyContact1Number?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact1Relation?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact2Number?: Prisma.StringFieldUpdateOperationsInput | string
@@ -907,16 +907,16 @@ export type EnumSubmissionStatusFieldUpdateOperationsInput = {
   set?: $Enums.SubmissionStatus
 }
 
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
-}
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -1073,7 +1073,7 @@ export type $FormSubmissionPayload<ExtArgs extends runtime.Types.Extensions.Inte
     panNumber: string
     maritalStatus: string
     aadhaarAddress: string
-    currentAddress: string
+    currentAddress: string | null
     emergencyContact1Number: string
     emergencyContact1Relation: string
     emergencyContact2Number: string

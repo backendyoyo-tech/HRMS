@@ -43,7 +43,7 @@ model FormSubmission {
 
   // Address Details
   aadhaarAddress String @db.Text
-  currentAddress String @db.Text
+  currentAddress String? @db.Text
 
   // Emergency Contact 1
   emergencyContact1Number   String

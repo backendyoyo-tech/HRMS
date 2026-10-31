@@ -36,9 +36,9 @@ export const exportSubmissionsExcelController: RequestHandler = async (
     const worksheet = workbook.addWorksheet("HR Submissions");
 
     worksheet.columns = [
-      { header: "Submission ID", key: "id", width: 38 },
-      { header: "Status", key: "status", width: 18 },
-      { header: "Submitted At", key: "createdAt", width: 24 },
+    //   { header: "Submission ID", key: "id", width: 38 },
+    //   { header: "Status", key: "status", width: 18 },
+    //   { header: "Submitted At", key: "createdAt", width: 24 },
 
       { header: "Full Name", key: "fullName", width: 28 },
       { header: "Designation", key: "designation", width: 24 },
@@ -109,7 +109,7 @@ export const exportSubmissionsExcelController: RequestHandler = async (
       { header: "IFSC Code", key: "ifscCode", width: 18 },
       { header: "Bank Name", key: "bankName", width: 28 },
 
-      { header: "Last Updated At", key: "updatedAt", width: 24 },
+    //   { header: "Last Updated At", key: "updatedAt", width: 24 },
     ];
 
     for (const submission of submissions) {

@@ -27,7 +27,7 @@ export const createSubmissionSchema = z
     maritalStatus: z.string().trim().min(2).max(50),
 
     aadhaarAddress: z.string().trim().min(5).max(1000),
-    currentAddress: z.string().trim().min(5).max(1000), //optional
+    currentAddress: z.string().trim().min(5).max(1000).optional().or(z.literal("")),
 
     emergencyContact1Number: phoneSchema,
     emergencyContact1Relation: z.string().trim().min(2).max(100),
@@ -38,15 +38,27 @@ export const createSubmissionSchema = z
     highestQualification: z.string().trim().min(2).max(200),
     instituteName: z.string().trim().min(2).max(200),
     passingYear: z.number().int().min(1950).max(2100),
-     
+
 
     //optional
-    previousCompanyName: z.string().trim().max(200).optional(),
-    previousCompanyDesignation: z.string().trim().max(150).optional(),
-    employmentDuration: z.string().trim().max(100).optional(),
-    previousHRName: z.string().trim().max(150).optional(),
-    previousHREmail: z.string().trim().email().max(255).optional(),
-    previousHRContactNumber: phoneSchema.optional(),
+    // Optional previous employment details
+    previousCompanyName: z.string().trim().max(200).optional().or(z.literal("")),
+    previousCompanyDesignation: z
+      .string()
+      .trim()
+      .max(150)
+      .optional()
+      .or(z.literal("")),
+    employmentDuration: z.string().trim().max(100).optional().or(z.literal("")),
+    previousHRName: z.string().trim().max(150).optional().or(z.literal("")),
+    previousHREmail: z
+      .string()
+      .trim()
+      .email()
+      .max(255)
+      .optional()
+      .or(z.literal("")),
+    previousHRContactNumber: phoneSchema.optional().or(z.literal("")),
 
     accountHolderName: z.string().trim().min(2).max(150),
     accountNumber: z.string().trim().min(6).max(34),
