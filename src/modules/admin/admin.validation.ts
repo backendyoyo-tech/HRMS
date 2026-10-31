@@ -4,14 +4,14 @@ export const createAdminSchema = z
   .object({
     name: z.string().trim().min(2).max(150),
     email: z.string().trim().email().max(255).toLowerCase(),
-    password: z.string().min(12).max(128),
+    password: z.string().min(8).max(60),
   })
   .strict();
 
 export const adminLoginSchema = z
   .object({
     email: z.string().trim().email().max(255).toLowerCase(),
-    password: z.string().min(1).max(128),
+    password: z.string().min(8).max(60),
   })
   .strict();
 
