@@ -179,13 +179,13 @@ export const exportSubmissionsExcelController: RequestHandler = async (
 
     headerRow.font = {
       bold: true,
-      color: { argb: "FFFFFFFF" },
+      color: { argb: "FF1F1F1F" },
     };
 
     headerRow.fill = {
       type: "pattern",
       pattern: "solid",
-      fgColor: { argb: "FFD2252B" },
+      fgColor: { argb: "FF5B9BD5" },
     };
 
     headerRow.alignment = {
