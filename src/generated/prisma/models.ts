@@ -11,4 +11,5 @@
 export type * from './models/FormSubmission.js'
 export type * from './models/Admin.js'
 export type * from './models/FormShareLink.js'
+export type * from './models/SubmissionEducation.js'
 export type * from './commonInputTypes.js'

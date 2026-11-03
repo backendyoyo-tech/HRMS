@@ -53,7 +53,8 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   FormSubmission: 'FormSubmission',
   Admin: 'Admin',
-  FormShareLink: 'FormShareLink'
+  FormShareLink: 'FormShareLink',
+  SubmissionEducation: 'SubmissionEducation'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -132,6 +133,19 @@ export const FormShareLinkScalarFieldEnum = {
 } as const
 
 export type FormShareLinkScalarFieldEnum = (typeof FormShareLinkScalarFieldEnum)[keyof typeof FormShareLinkScalarFieldEnum]
+
+
+export const SubmissionEducationScalarFieldEnum = {
+  id: 'id',
+  submissionId: 'submissionId',
+  qualification: 'qualification',
+  instituteName: 'instituteName',
+  passingYear: 'passingYear',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SubmissionEducationScalarFieldEnum = (typeof SubmissionEducationScalarFieldEnum)[keyof typeof SubmissionEducationScalarFieldEnum]
 
 
 export const SortOrder = {

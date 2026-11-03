@@ -30,6 +30,16 @@ export const createSubmission = async (
       instituteName: data.instituteName,
       passingYear: data.passingYear,
 
+      educations: data.educations?.length
+        ? {
+          create: data.educations.map((education) => ({
+            qualification: education.qualification,
+            instituteName: education.instituteName,
+            passingYear: education.passingYear,
+          })),
+        }
+        : undefined,
+
       previousCompanyName: data.previousCompanyName || null,
       previousCompanyDesignation:
         data.previousCompanyDesignation || null,

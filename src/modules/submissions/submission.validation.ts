@@ -5,6 +5,14 @@ const phoneSchema = z
   .trim()
   .regex(/^[6-9]\d{9}$/, "Enter a valid 10-digit Indian mobile number");
 
+  const educationSchema = z
+  .object({
+    qualification: z.string().trim().min(2).max(200),
+    instituteName: z.string().trim().min(2).max(200),
+    passingYear: z.number().int().min(1950).max(2100),
+  })
+  .strict();
+
 export const createSubmissionSchema = z
   .object({
     fullName: z.string().trim().min(2).max(150),
@@ -39,7 +47,7 @@ export const createSubmissionSchema = z
     instituteName: z.string().trim().min(2).max(200),
     passingYear: z.number().int().min(1950).max(2100),
 
-
+    educations: z.array(educationSchema).max(20).optional(),
     //optional
     // Optional previous employment details
     previousCompanyName: z.string().trim().max(200).optional().or(z.literal("")),

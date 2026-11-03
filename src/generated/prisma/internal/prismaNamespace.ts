@@ -399,7 +399,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   FormSubmission: 'FormSubmission',
   Admin: 'Admin',
-  FormShareLink: 'FormShareLink'
+  FormShareLink: 'FormShareLink',
+  SubmissionEducation: 'SubmissionEducation'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -415,7 +416,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "formSubmission" | "admin" | "formShareLink"
+    modelProps: "formSubmission" | "admin" | "formShareLink" | "submissionEducation"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -641,6 +642,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    SubmissionEducation: {
+      payload: Prisma.$SubmissionEducationPayload<ExtArgs>
+      fields: Prisma.SubmissionEducationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SubmissionEducationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmissionEducationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SubmissionEducationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmissionEducationPayload>
+        }
+        findFirst: {
+          args: Prisma.SubmissionEducationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmissionEducationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SubmissionEducationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmissionEducationPayload>
+        }
+        findMany: {
+          args: Prisma.SubmissionEducationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmissionEducationPayload>[]
+        }
+        create: {
+          args: Prisma.SubmissionEducationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmissionEducationPayload>
+        }
+        createMany: {
+          args: Prisma.SubmissionEducationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SubmissionEducationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmissionEducationPayload>[]
+        }
+        delete: {
+          args: Prisma.SubmissionEducationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmissionEducationPayload>
+        }
+        update: {
+          args: Prisma.SubmissionEducationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmissionEducationPayload>
+        }
+        deleteMany: {
+          args: Prisma.SubmissionEducationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SubmissionEducationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SubmissionEducationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmissionEducationPayload>[]
+        }
+        upsert: {
+          args: Prisma.SubmissionEducationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmissionEducationPayload>
+        }
+        aggregate: {
+          args: Prisma.SubmissionEducationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSubmissionEducation>
+        }
+        groupBy: {
+          args: Prisma.SubmissionEducationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SubmissionEducationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SubmissionEducationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SubmissionEducationCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -740,6 +815,19 @@ export const FormShareLinkScalarFieldEnum = {
 } as const
 
 export type FormShareLinkScalarFieldEnum = (typeof FormShareLinkScalarFieldEnum)[keyof typeof FormShareLinkScalarFieldEnum]
+
+
+export const SubmissionEducationScalarFieldEnum = {
+  id: 'id',
+  submissionId: 'submissionId',
+  qualification: 'qualification',
+  instituteName: 'instituteName',
+  passingYear: 'passingYear',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SubmissionEducationScalarFieldEnum = (typeof SubmissionEducationScalarFieldEnum)[keyof typeof SubmissionEducationScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1023,6 +1111,7 @@ export type GlobalOmitConfig = {
   formSubmission?: Prisma.FormSubmissionOmit
   admin?: Prisma.AdminOmit
   formShareLink?: Prisma.FormShareLinkOmit
+  submissionEducation?: Prisma.SubmissionEducationOmit
 }
 
 /* Types for Logging */

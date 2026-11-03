@@ -416,6 +416,7 @@ export type FormSubmissionWhereInput = {
   bankName?: Prisma.StringFilter<"FormSubmission"> | string
   createdAt?: Prisma.DateTimeFilter<"FormSubmission"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"FormSubmission"> | Date | string
+  educations?: Prisma.SubmissionEducationListRelationFilter
 }
 
 export type FormSubmissionOrderByWithRelationInput = {
@@ -449,6 +450,7 @@ export type FormSubmissionOrderByWithRelationInput = {
   bankName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  educations?: Prisma.SubmissionEducationOrderByRelationAggregateInput
 }
 
 export type FormSubmissionWhereUniqueInput = Prisma.AtLeast<{
@@ -485,6 +487,7 @@ export type FormSubmissionWhereUniqueInput = Prisma.AtLeast<{
   bankName?: Prisma.StringFilter<"FormSubmission"> | string
   createdAt?: Prisma.DateTimeFilter<"FormSubmission"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"FormSubmission"> | Date | string
+  educations?: Prisma.SubmissionEducationListRelationFilter
 }, "id">
 
 export type FormSubmissionOrderByWithAggregationInput = {
@@ -592,6 +595,7 @@ export type FormSubmissionCreateInput = {
   bankName: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  educations?: Prisma.SubmissionEducationCreateNestedManyWithoutSubmissionInput
 }
 
 export type FormSubmissionUncheckedCreateInput = {
@@ -625,6 +629,7 @@ export type FormSubmissionUncheckedCreateInput = {
   bankName: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  educations?: Prisma.SubmissionEducationUncheckedCreateNestedManyWithoutSubmissionInput
 }
 
 export type FormSubmissionUpdateInput = {
@@ -658,6 +663,7 @@ export type FormSubmissionUpdateInput = {
   bankName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  educations?: Prisma.SubmissionEducationUpdateManyWithoutSubmissionNestedInput
 }
 
 export type FormSubmissionUncheckedUpdateInput = {
@@ -691,6 +697,7 @@ export type FormSubmissionUncheckedUpdateInput = {
   bankName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  educations?: Prisma.SubmissionEducationUncheckedUpdateManyWithoutSubmissionNestedInput
 }
 
 export type FormSubmissionCreateManyInput = {
@@ -899,6 +906,11 @@ export type FormSubmissionSumOrderByAggregateInput = {
   passingYear?: Prisma.SortOrder
 }
 
+export type FormSubmissionScalarRelationFilter = {
+  is?: Prisma.FormSubmissionWhereInput
+  isNot?: Prisma.FormSubmissionWhereInput
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -923,6 +935,197 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+export type FormSubmissionCreateNestedOneWithoutEducationsInput = {
+  create?: Prisma.XOR<Prisma.FormSubmissionCreateWithoutEducationsInput, Prisma.FormSubmissionUncheckedCreateWithoutEducationsInput>
+  connectOrCreate?: Prisma.FormSubmissionCreateOrConnectWithoutEducationsInput
+  connect?: Prisma.FormSubmissionWhereUniqueInput
+}
+
+export type FormSubmissionUpdateOneRequiredWithoutEducationsNestedInput = {
+  create?: Prisma.XOR<Prisma.FormSubmissionCreateWithoutEducationsInput, Prisma.FormSubmissionUncheckedCreateWithoutEducationsInput>
+  connectOrCreate?: Prisma.FormSubmissionCreateOrConnectWithoutEducationsInput
+  upsert?: Prisma.FormSubmissionUpsertWithoutEducationsInput
+  connect?: Prisma.FormSubmissionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FormSubmissionUpdateToOneWithWhereWithoutEducationsInput, Prisma.FormSubmissionUpdateWithoutEducationsInput>, Prisma.FormSubmissionUncheckedUpdateWithoutEducationsInput>
+}
+
+export type FormSubmissionCreateWithoutEducationsInput = {
+  id?: string
+  status?: $Enums.SubmissionStatus
+  fullName: string
+  designation: string
+  personalEmail: string
+  contactNumber: string
+  aadhaarNumber: string
+  panNumber: string
+  maritalStatus: string
+  aadhaarAddress: string
+  currentAddress?: string | null
+  emergencyContact1Number: string
+  emergencyContact1Relation: string
+  emergencyContact2Number: string
+  emergencyContact2Relation: string
+  highestQualification: string
+  instituteName: string
+  passingYear: number
+  previousCompanyName?: string | null
+  previousCompanyDesignation?: string | null
+  employmentDuration?: string | null
+  previousHRName?: string | null
+  previousHREmail?: string | null
+  previousHRContactNumber?: string | null
+  accountHolderName: string
+  accountNumber: string
+  ifscCode: string
+  bankName: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type FormSubmissionUncheckedCreateWithoutEducationsInput = {
+  id?: string
+  status?: $Enums.SubmissionStatus
+  fullName: string
+  designation: string
+  personalEmail: string
+  contactNumber: string
+  aadhaarNumber: string
+  panNumber: string
+  maritalStatus: string
+  aadhaarAddress: string
+  currentAddress?: string | null
+  emergencyContact1Number: string
+  emergencyContact1Relation: string
+  emergencyContact2Number: string
+  emergencyContact2Relation: string
+  highestQualification: string
+  instituteName: string
+  passingYear: number
+  previousCompanyName?: string | null
+  previousCompanyDesignation?: string | null
+  employmentDuration?: string | null
+  previousHRName?: string | null
+  previousHREmail?: string | null
+  previousHRContactNumber?: string | null
+  accountHolderName: string
+  accountNumber: string
+  ifscCode: string
+  bankName: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type FormSubmissionCreateOrConnectWithoutEducationsInput = {
+  where: Prisma.FormSubmissionWhereUniqueInput
+  create: Prisma.XOR<Prisma.FormSubmissionCreateWithoutEducationsInput, Prisma.FormSubmissionUncheckedCreateWithoutEducationsInput>
+}
+
+export type FormSubmissionUpsertWithoutEducationsInput = {
+  update: Prisma.XOR<Prisma.FormSubmissionUpdateWithoutEducationsInput, Prisma.FormSubmissionUncheckedUpdateWithoutEducationsInput>
+  create: Prisma.XOR<Prisma.FormSubmissionCreateWithoutEducationsInput, Prisma.FormSubmissionUncheckedCreateWithoutEducationsInput>
+  where?: Prisma.FormSubmissionWhereInput
+}
+
+export type FormSubmissionUpdateToOneWithWhereWithoutEducationsInput = {
+  where?: Prisma.FormSubmissionWhereInput
+  data: Prisma.XOR<Prisma.FormSubmissionUpdateWithoutEducationsInput, Prisma.FormSubmissionUncheckedUpdateWithoutEducationsInput>
+}
+
+export type FormSubmissionUpdateWithoutEducationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSubmissionStatusFieldUpdateOperationsInput | $Enums.SubmissionStatus
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  designation?: Prisma.StringFieldUpdateOperationsInput | string
+  personalEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  aadhaarNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  panNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  maritalStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  aadhaarAddress?: Prisma.StringFieldUpdateOperationsInput | string
+  currentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyContact1Number?: Prisma.StringFieldUpdateOperationsInput | string
+  emergencyContact1Relation?: Prisma.StringFieldUpdateOperationsInput | string
+  emergencyContact2Number?: Prisma.StringFieldUpdateOperationsInput | string
+  emergencyContact2Relation?: Prisma.StringFieldUpdateOperationsInput | string
+  highestQualification?: Prisma.StringFieldUpdateOperationsInput | string
+  instituteName?: Prisma.StringFieldUpdateOperationsInput | string
+  passingYear?: Prisma.IntFieldUpdateOperationsInput | number
+  previousCompanyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  previousCompanyDesignation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  employmentDuration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  previousHRName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  previousHREmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  previousHRContactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountHolderName?: Prisma.StringFieldUpdateOperationsInput | string
+  accountNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  ifscCode?: Prisma.StringFieldUpdateOperationsInput | string
+  bankName?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type FormSubmissionUncheckedUpdateWithoutEducationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSubmissionStatusFieldUpdateOperationsInput | $Enums.SubmissionStatus
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  designation?: Prisma.StringFieldUpdateOperationsInput | string
+  personalEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  aadhaarNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  panNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  maritalStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  aadhaarAddress?: Prisma.StringFieldUpdateOperationsInput | string
+  currentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyContact1Number?: Prisma.StringFieldUpdateOperationsInput | string
+  emergencyContact1Relation?: Prisma.StringFieldUpdateOperationsInput | string
+  emergencyContact2Number?: Prisma.StringFieldUpdateOperationsInput | string
+  emergencyContact2Relation?: Prisma.StringFieldUpdateOperationsInput | string
+  highestQualification?: Prisma.StringFieldUpdateOperationsInput | string
+  instituteName?: Prisma.StringFieldUpdateOperationsInput | string
+  passingYear?: Prisma.IntFieldUpdateOperationsInput | number
+  previousCompanyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  previousCompanyDesignation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  employmentDuration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  previousHRName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  previousHREmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  previousHRContactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountHolderName?: Prisma.StringFieldUpdateOperationsInput | string
+  accountNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  ifscCode?: Prisma.StringFieldUpdateOperationsInput | string
+  bankName?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type FormSubmissionCountOutputType
+ */
+
+export type FormSubmissionCountOutputType = {
+  educations: number
+}
+
+export type FormSubmissionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  educations?: boolean | FormSubmissionCountOutputTypeCountEducationsArgs
+}
+
+/**
+ * FormSubmissionCountOutputType without action
+ */
+export type FormSubmissionCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FormSubmissionCountOutputType
+   */
+  select?: Prisma.FormSubmissionCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * FormSubmissionCountOutputType without action
+ */
+export type FormSubmissionCountOutputTypeCountEducationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SubmissionEducationWhereInput
+}
 
 
 export type FormSubmissionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -956,6 +1159,8 @@ export type FormSubmissionSelect<ExtArgs extends runtime.Types.Extensions.Intern
   bankName?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  educations?: boolean | Prisma.FormSubmission$educationsArgs<ExtArgs>
+  _count?: boolean | Prisma.FormSubmissionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["formSubmission"]>
 
 export type FormSubmissionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1058,10 +1263,18 @@ export type FormSubmissionSelectScalar = {
 }
 
 export type FormSubmissionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "status" | "fullName" | "designation" | "personalEmail" | "contactNumber" | "aadhaarNumber" | "panNumber" | "maritalStatus" | "aadhaarAddress" | "currentAddress" | "emergencyContact1Number" | "emergencyContact1Relation" | "emergencyContact2Number" | "emergencyContact2Relation" | "highestQualification" | "instituteName" | "passingYear" | "previousCompanyName" | "previousCompanyDesignation" | "employmentDuration" | "previousHRName" | "previousHREmail" | "previousHRContactNumber" | "accountHolderName" | "accountNumber" | "ifscCode" | "bankName" | "createdAt" | "updatedAt", ExtArgs["result"]["formSubmission"]>
+export type FormSubmissionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  educations?: boolean | Prisma.FormSubmission$educationsArgs<ExtArgs>
+  _count?: boolean | Prisma.FormSubmissionCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type FormSubmissionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type FormSubmissionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $FormSubmissionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "FormSubmission"
-  objects: {}
+  objects: {
+    educations: Prisma.$SubmissionEducationPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     status: $Enums.SubmissionStatus
@@ -1487,6 +1700,7 @@ readonly fields: FormSubmissionFieldRefs;
  */
 export interface Prisma__FormSubmissionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  educations<T extends Prisma.FormSubmission$educationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FormSubmission$educationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubmissionEducationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1563,6 +1777,10 @@ export type FormSubmissionFindUniqueArgs<ExtArgs extends runtime.Types.Extension
    */
   omit?: Prisma.FormSubmissionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FormSubmissionInclude<ExtArgs> | null
+  /**
    * Filter, which FormSubmission to fetch.
    */
   where: Prisma.FormSubmissionWhereUniqueInput
@@ -1581,6 +1799,10 @@ export type FormSubmissionFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Ex
    */
   omit?: Prisma.FormSubmissionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FormSubmissionInclude<ExtArgs> | null
+  /**
    * Filter, which FormSubmission to fetch.
    */
   where: Prisma.FormSubmissionWhereUniqueInput
@@ -1598,6 +1820,10 @@ export type FormSubmissionFindFirstArgs<ExtArgs extends runtime.Types.Extensions
    * Omit specific fields from the FormSubmission
    */
   omit?: Prisma.FormSubmissionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FormSubmissionInclude<ExtArgs> | null
   /**
    * Filter, which FormSubmission to fetch.
    */
@@ -1647,6 +1873,10 @@ export type FormSubmissionFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Ext
    */
   omit?: Prisma.FormSubmissionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FormSubmissionInclude<ExtArgs> | null
+  /**
    * Filter, which FormSubmission to fetch.
    */
   where?: Prisma.FormSubmissionWhereInput
@@ -1694,6 +1924,10 @@ export type FormSubmissionFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Omit specific fields from the FormSubmission
    */
   omit?: Prisma.FormSubmissionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FormSubmissionInclude<ExtArgs> | null
   /**
    * Filter, which FormSubmissions to fetch.
    */
@@ -1743,6 +1977,10 @@ export type FormSubmissionCreateArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.FormSubmissionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FormSubmissionInclude<ExtArgs> | null
+  /**
    * The data needed to create a FormSubmission.
    */
   data: Prisma.XOR<Prisma.FormSubmissionCreateInput, Prisma.FormSubmissionUncheckedCreateInput>
@@ -1790,6 +2028,10 @@ export type FormSubmissionUpdateArgs<ExtArgs extends runtime.Types.Extensions.In
    * Omit specific fields from the FormSubmission
    */
   omit?: Prisma.FormSubmissionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FormSubmissionInclude<ExtArgs> | null
   /**
    * The data needed to update a FormSubmission.
    */
@@ -1857,6 +2099,10 @@ export type FormSubmissionUpsertArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.FormSubmissionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FormSubmissionInclude<ExtArgs> | null
+  /**
    * The filter to search for the FormSubmission to update in case it exists.
    */
   where: Prisma.FormSubmissionWhereUniqueInput
@@ -1883,6 +2129,10 @@ export type FormSubmissionDeleteArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.FormSubmissionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FormSubmissionInclude<ExtArgs> | null
+  /**
    * Filter which FormSubmission to delete.
    */
   where: Prisma.FormSubmissionWhereUniqueInput
@@ -1903,6 +2153,30 @@ export type FormSubmissionDeleteManyArgs<ExtArgs extends runtime.Types.Extension
 }
 
 /**
+ * FormSubmission.educations
+ */
+export type FormSubmission$educationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SubmissionEducation
+   */
+  select?: Prisma.SubmissionEducationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SubmissionEducation
+   */
+  omit?: Prisma.SubmissionEducationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SubmissionEducationInclude<ExtArgs> | null
+  where?: Prisma.SubmissionEducationWhereInput
+  orderBy?: Prisma.SubmissionEducationOrderByWithRelationInput | Prisma.SubmissionEducationOrderByWithRelationInput[]
+  cursor?: Prisma.SubmissionEducationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SubmissionEducationScalarFieldEnum | Prisma.SubmissionEducationScalarFieldEnum[]
+}
+
+/**
  * FormSubmission without action
  */
 export type FormSubmissionDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1914,4 +2188,8 @@ export type FormSubmissionDefaultArgs<ExtArgs extends runtime.Types.Extensions.I
    * Omit specific fields from the FormSubmission
    */
   omit?: Prisma.FormSubmissionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FormSubmissionInclude<ExtArgs> | null
 }
